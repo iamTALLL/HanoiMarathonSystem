@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Signin</title>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .signin-container {
+            width: 400px;
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .signin-container h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .signin-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .signin-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .signin-container input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+        }
+
+        .signin-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #000; /* Black button */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .signin-container button:hover {
+            background-color: #333; /* Darker shade on hover */
+        }
+
+        .signin-container .participant-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .signin-container .participant-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .signin-container .participant-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="signin-container">
+        <h2>Admin Signin</h2>
+        <form action="process_admin.php" method="POST">
+            <label for="admin_username">Username</label>
+            <input type="text" id="username" name="admin_username" placeholder="Enter your admin username" required>
+            
+            <label for="admin_password">Password</label>
+            <input type="password" id="password" name="admin_password" placeholder="Enter your admin password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+        <div class="participant-link">
+            Not an admin? <a href="signin.html">Sign in as participant</a>
+        </div>
+    </div>
+</body>
+</html>

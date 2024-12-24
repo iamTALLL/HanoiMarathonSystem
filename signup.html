@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #5a67d8;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #434190;
+        }
+    </style>
+</head>
+<body>
+    <h1>Participant Signup Form</h1>
+    <form action="process_signup.php" method="POST">
+        <!-- Personal Information -->
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" value="name" placeholder="Enter your full name" required>
+
+
+
+        <label for="nationality">Nationality</label>
+        <input type="text" id="nationality" name="nationality" placeholder="Your nationality" required>
+
+        <label for="sex">Sex</label>
+        <select id="sex" name="sex" required>
+            <option value="" disabled selected>Select your sex</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" placeholder="Your age" min="1" required>
+
+        
+        <!-- Current Address -->
+        <h3>Current Address</h3>
+        <label for="hotelName">Hotel Name</label>
+        <input type="text" id="hotelName" name="hotelName" placeholder="Hotel name">
+
+        <label for="district">District</label>
+        <select id="district" name="district" required onchange="updateWards()">
+            <option value="" disabled selected>Select your district</option>
+            <option value="Hoan Kiem">Hoàn Kiếm</option>
+            <option value="Ba Dinh">Ba Đình</option>
+            <option value="Dong Da">Đống Đa</option>
+            <option value="Hai Ba Trung">Hai Bà Trưng</option>
+            <option value="Cau Giay">Cầu Giấy</option>
+            <option value="Thanh Xuan">Thanh Xuân</option>
+            <option value="Ha Dong">Hà Đông</option>
+            <option value="Long Bien">Long Biên</option>
+            <option value="Gia Lam">Gia Lâm</option>
+            <option value="Nam Tu Liem">Nam Từ Liêm</option>
+            <option value="Bac Tu Liem">Bắc Từ Liêm</option>
+            <option value="Tay Ho">Tây Hồ</option>
+            <option value="Son Tay">Sơn Tây</option>
+            <option value="Me Linh">Mê Linh</option>
+            <option value="Hoai Duc">Hoài Đức</option>
+            <option value="Phu Xuyen">Phú Xuyên</option>
+            <option value="Thanh Oai">Thanh Oai</option>
+            <option value="Thuong Tin">Thường Tín</option>
+            <option value="Phuc Tho">Phúc Thọ</option>
+            <option value="Ba Vi">Ba Vì</option>
+            <option value="Dan Phuong">Đan Phượng</option>
+            <option value="Chuong My">Chương Mỹ</option>
+            <option value="Thanh Tri">Thanh Trì</option>
+            <option value="Hoang Mai">Hoàng Mai</option>
+            <option value="Ha Tay">Hà Tây</option>
+            <option value="Hai Duong">Hải Dương</option>
+        </select>
+        
+        <label for="ward">Ward</label>
+        <select id="ward" name="ward" required>
+            <option value="" disabled selected>Select your ward</option>
+        </select>
+        
+        <script>
+            // Function to update wards based on selected district
+            function updateWards() {
+                var district = document.getElementById('district').value;
+                var wardSelect = document.getElementById('ward');
+                wardSelect.innerHTML = ''; // Clear current ward options
+        
+                var wards = [];
+        
+                // Define wards for each district
+                if (district === 'Hoan Kiem') {
+                    wards = [
+                        "Hàng Bài", "Hàng Bạc", "Hàng Buồm", "Phúc Tân", "Chương Dương", 
+                        "Cầu Gỗ", "Tràng Tiền", "Hàng Gai"
+                    ];
+                } else if (district === 'Ba Dinh') {
+                    wards = [
+                        "Ngọc Hà", "Liên Bảo", "Dịch Vọng", "Phúc Xá", "Trúc Bạch", 
+                        "Vạn Bảo", "Nguyễn Trung Trực"
+                    ];
+                } else if (district === 'Dong Da') {
+                    wards = [
+                        "Cát Linh", "Hàng Bột", "Trung Liệt", "Láng Hạ", "Khâm Thiên", 
+                        "Thịnh Quang"
+                    ];
+                } else if (district === 'Hai Ba Trung') {
+                    wards = [
+                        "Quỳnh Mai", "Thanh Lương", "Bạch Mai", "Trương Định", 
+                        "Mai Động", "Vĩnh Tuy"
+                    ];
+                } else if (district === 'Cau Giay') {
+                    wards = [
+                        "Dịch Vọng Hậu", "Cầu Giấy", "Mai Dịch", "Trung Hòa", "Yên Hòa"
+                    ];
+                } else if (district === 'Thanh Xuan') {
+                    wards = [
+                        "Hiệp Thanh", "Thanh Xuân Nam", "Thanh Xuân Bắc", "Khương Trung", 
+                        "Linh Đàm"
+                    ];
+                } else if (district === 'Ha Dong') {
+                    wards = [
+                        "Biên Giang", "Yên Nghĩa", "Quốc Oai", "Mỹ Đình", "Phú Lương"
+                    ];
+                } else if (district === 'Long Bien') {
+                    wards = [
+                        "Ngọc Thụy", "Gia Thuỵ", "Bồ Đề", "Cự Khối", "Long Biên"
+                    ];
+                } else if (district === 'Gia Lam') {
+                    wards = [
+                        "Gia Lâm", "Cổ Bi", "Bắc Sơn", "Dương Xá", "Đình Xuyên"
+                    ];
+                } else if (district === 'Nam Tu Liem') {
+                    wards = [
+                        "Mỹ Đình 1", "Mỹ Đình 2", "Cầu Diễn", "Phú Diễn"
+                    ];
+                } else if (district === 'Bac Tu Liem') {
+                    wards = [
+                        "Minh Khai", "Liên Mạc", "Cổ Nhuế", "Phú Diễn"
+                    ];
+                } else if (district === 'Tay Ho') {
+                    wards = [
+                        "Tây Hồ", "Quảng An", "Thụy Khuê", "Xuân La"
+                    ];
+                } else if (district === 'Son Tay') {
+                    wards = [
+                        "Sơn Tây", "Đường Lâm", "Thanh Mỹ"
+                    ];
+                } else if (district === 'Me Linh') {
+                    wards = [
+                        "Mê Linh", "Tiến Thắng", "Quang Minh"
+                    ];
+                } else if (district === 'Hoai Duc') {
+                    wards = [
+                        "An Khánh", "Di Trạch", "Vân Canh", "Kim Chung"
+                    ];
+                } else if (district === 'Phu Xuyen') {
+                    wards = [
+                        "Phú Minh", "Phú Xuyên", "Trường Thịnh"
+                    ];
+                } else if (district === 'Thanh Oai') {
+                    wards = [
+                        "Thanh Oai", "Bình Minh"
+                    ];
+                } else if (district === 'Thuong Tin') {
+                    wards = [
+                        "Thường Tín", "Vĩnh Quỳnh"
+                    ];
+                } else if (district === 'Phuc Tho') {
+                    wards = [
+                        "Phúc Thọ", "Vân Hòa"
+                    ];
+                } else if (district === 'Ba Vi') {
+                    wards = [
+                        "Ba Vì", "Vân Hòa"
+                    ];
+                } else if (district === 'Dan Phuong') {
+                    wards = [
+                        "Đan Phượng", "Hát Môn"
+                    ];
+                } else if (district === 'Chuong My') {
+                    wards = [
+                        "Chương Mỹ", "Lê Lợi"
+                    ];
+                } else if (district === 'Thanh Tri') {
+                    wards = [
+                        "Thanh Trì", "Tả Thanh Oai"
+                    ];
+                } else if (district === 'Hoang Mai') {
+                    wards = [
+                        "Hoàng Mai", "Lĩnh Nam"
+                    ];
+                }
+        
+                // Add new options to the ward select
+                if (wards.length > 0) {
+                    var defaultOption = document.createElement('option');
+                    defaultOption.text = 'Select your ward';
+                    defaultOption.disabled = true;
+                    defaultOption.selected = true;
+                    wardSelect.appendChild(defaultOption);
+        
+                    wards.forEach(function(ward) {
+                        var option = document.createElement('option');
+                        option.value = ward;
+                        option.text = ward;
+                        wardSelect.appendChild(option);
+                    });
+                }
+            }
+        </script>
+        
+
+        <label for="address">Full Address</label>
+        <textarea id="address" name="address" rows="3" placeholder="Enter full address" required></textarea>
+
+        <label for="curaddress">Current Address</label>
+        <input type="text" id="curaddress" name="curaddress" readonly placeholder="Current address will be updated automatically">
+
+        <!-- Contact Information -->
+        <h3>Contact Information</h3>
+        <label for="passportID">Passport/ID</label>
+        <input type="text" id="passportID" name="passportID" placeholder="Passport/ID number" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your email address" required>
+
+        <label for="mobile">Mobile</label>
+        <input type="tel" id="mobile" name="mobile" placeholder="Your mobile number" required>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        // Function to load wards dynamically based on district
+        function loadWards() {
+            const wardSelect = document.getElementById("ward");
+            const district = document.getElementById("district").value;
+
+            const wards = {
+                "Hoan Kiem": ["Hang Trong", "Hang Bac", "Hang Gai"],
+                "Ba Dinh": ["Kim Ma", "Doi Can", "Ngoc Ha", "Ngoc Khanh"],
+                "Dong Da": ["Lang Ha", "Cat Linh", "Quoc Tu Giam"],
+                "Hai Ba Trung": ["Bach Khoa", "Dong Mac", "Quynh Mai"],
+                "Cau Giay": ["Dich Vong", "Nghia Tan", "Yen Hoa"],
+                "Thanh Xuan": ["Khuong Dinh", "Thanh Xuan Bac", "Nhan Chinh"],
+                "Ha Dong": ["Van Phuc", "Mo Lao", "Ha Cau"]
+            };
+
+            // Clear previous options
+            wardSelect.innerHTML = '<option value="" disabled selected>Select your ward</option>';
+
+            // Add new options
+            if (wards[district]) {
+                wards[district].forEach(ward => {
+                    const option = document.createElement("option");
+                    option.value = ward;
+                    option.textContent = ward;
+                    wardSelect.appendChild(option);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
+
+
